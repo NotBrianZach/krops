@@ -43,7 +43,7 @@ in
       set -efu
       ${populate { inherit force source; target = target'; }}
       ${build target'}
-      ${rebuild ["switch"] ++ args target'}
+      ${rebuild (["switch"] ++ args) target'}
     '';
 
   writeTest = name: { force ? false, source, target }: let
@@ -61,5 +61,4 @@ in
           --show-trace \
           '<nixpkgs/nixos>'
     '';
-
 }
