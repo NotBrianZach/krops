@@ -36,14 +36,14 @@ in
       ];
     };
 
-  writeDeploy = name: { force ? false, source, target, args }: let
+  writeDeploy = name: { force ? false, source, target }: let
     target' = lib.mkTarget target;
   in
     writeDash name ''
       set -efu
       ${populate { inherit force source; target = target'; }}
       ${build target'}
-      ${rebuild (["switch"] ++ args) target'}
+      ${rebuild ["switch"] target'}
     '';
 
   writeTest = name: { force ? false, source, target }: let
