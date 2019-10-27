@@ -43,7 +43,7 @@ in
       set -efu
       ${populate { inherit force source; target = target'; }}
       ${build target'}
-      ${rebuild ["switch"] target'}
+      ${rebuild "switch" target'}
     '';
 
   writeTest = name: { force ? false, source, target }: let
