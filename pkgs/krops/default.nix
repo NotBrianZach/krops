@@ -9,7 +9,7 @@ in
       filename = "${openssh}/bin/ssh";
       argv = [
         filename
-        "-l" target.user
+        "-l" target.buildUser
         "-p" target.port
         "-t"
         target.host
@@ -27,7 +27,7 @@ in
       filename = "${openssh}/bin/ssh";
       argv = [
         filename
-        "-l" target.user
+        "-l" target.buildUser
         "-p" target.port
         target.host
         "nixos-rebuild -I ${lib.escapeShellArg target.path} ${
