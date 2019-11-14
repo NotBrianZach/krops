@@ -45,7 +45,7 @@ let {
     mkTarget = s: let
       default = defVal: val: if val != null then val else defVal;
       parse = lib.match "(([^@]+)@)?(([^:/]+))?(:([^/]+))?(/.*)?" s;
-      pathValueOrNull = t: p: if lib.hasAttrByPath [p] t then t.p else null;
+      pathValueOrNull = t: p: if lib.hasAttrByPath [p] t then t."${p}" else null;
       elemAt' = xs: i: if lib.length xs > i then lib.elemAt xs i else null;
     in if lib.isString s then
     {
