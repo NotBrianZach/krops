@@ -57,7 +57,7 @@ let {
       user = default (lib.getEnv "LOGNAME") (pathValueOrNull s "user");
       buildUser = default "root" (pathValueOrNull s "buildUser");
       host = default (lib.maybeEnv "HOSTNAME" lib.getHostName) (pathValueOrNull s "host");
-      port = default "22" /* "ssh"? */ (pathValueOrNull s.port);
+      port = default "22" /* "ssh"? */ (pathValueOrNull s "port");
       path = default "/var/src" /* no default? */ (pathValueOrNull s "path");
     };
 
