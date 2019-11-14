@@ -54,11 +54,11 @@ let {
       port = default "22" /* "ssh"? */ (elemAt' parse 5);
       path = default "/var/src" /* no default? */ (elemAt' parse 6);
     } else {
-      user = pathValueOrNull s.user;
-      buildUser = pathValueOrNull s.buildUser;
-      host = pathValueOrNull s.host;
-      port = default "22" /* "ssh"? */ pathValueOrNull s.port;
-      path = default "/var/src" /* no default? */ pathValueOrNull s.path;
+      user = default (lib.getEnv "LOGNAME") (pathValueOrNull s.user);
+      buildUser = default "root" (pathValueOrNull s.buildUser);
+      host = default (lib.maybeEnv "HOSTNAME" lib.getHostName) (pathValueOrNull s.host);
+      port = default "22" /* "ssh"? */ (pathValueOrNull s.port);
+      path = default "/var/src" /* no default? */ (pathValueOrNull s.path);
     };
 
     shell = let
